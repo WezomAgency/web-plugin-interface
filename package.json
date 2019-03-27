@@ -1,6 +1,6 @@
 {
   "name": "web-plugin-interface",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "url": "https://github.com/dutchenkoOleg/web-plugin-interface/issues"
   },
   "homepage": "https://github.com/dutchenkoOleg/web-plugin-interface#readme",
-  "dependencies": {
+  "devDependencies": {
     "eslint-config-wezom-relax": "^1.1.0"
   }
 }
