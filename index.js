@@ -13,19 +13,28 @@ export class WebPluginInterface {
 		// code
 	}
 
-	bootstrap () {
+	/**
+	 * @protected
+	 */
+	_bootstrap () {
 		// code
 	}
 
-	beforeInitialize () {
+	/**
+	 * @protected
+	 */
+	_beforeInitialize () {
+		// code
+	}
+
+	/**
+	 * @protected
+	 */
+	_afterInitialize () {
 		// code
 	}
 
 	initialize () {
-		// code
-	}
-
-	afterInitialize () {
 		// code
 	}
 
