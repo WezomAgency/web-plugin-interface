@@ -9,8 +9,8 @@
  * @interface
  */
 export class WebPluginInterface {
-	constructor () {
-		console.log('implement abstract constructor');
+	constructor () { // eslint-disable-line no-useless-constructor
+		// code
 	}
 
 	bootstrap () {
