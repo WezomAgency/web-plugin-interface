@@ -16,7 +16,7 @@ export class WebPluginInterface {
 	/**
 	 * @protected
 	 */
-	_bootstrap () {
+	_setup () {
 		// code
 	}
 
