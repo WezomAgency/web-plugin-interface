@@ -36,34 +36,34 @@ Here we describe the future instances.:
 
 ### `_setup()`
 
-`protected`
+_`protected`_
 
 The method is designed to prepare data for initialization.  
 For example, setting up future plugin options, etc.
 
 ### `_beforeInitialize()`
 
-`protected`
+_`protected`_
 
 It describes the actions that must be performed before initializing the plug-in.  
 For example, add the CSS class `.is-ready` to the HTML element to which your plugin will be applied.
 
 ### `_afterInitialize()`
 
-`protected`
+_`protected`_
 
 Here we can describe the actions that should be performed after the initialization of the plugin.  
 For example, add an additional handler to scroll or resize window events, which will update the parameters of your current plugin.
 
 ### `initialize()`
 
-`public`
+_`public`_
 
 Directly launch your plugin.
 
 ### `defaults`
 
-`public`
+_`public`_
 
 A getter that returns an object with default options, settings, or configuration for your plugin.
 
@@ -99,17 +99,17 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
     }
 
     /** @protected */
-    _beforeInitialize(){
+    _beforeInitialize () {
         this.$container.addClass(this.readyCssClass);
     }
 
     /** @protected */
-    _afterInitialize(){
-        this.$container.addClass(this.initializedCssClass)
+    _afterInitialize () {
+        this.$container.addClass(this.initializedCssClass);
     }
 
     /** @public */
-    initialize(){
+    initialize () {
     	this._setup();
     	this._beforeInitialize();
         this.$container.someJqueryPlugin(this.settings);
