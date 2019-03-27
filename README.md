@@ -71,7 +71,11 @@ A getter that returns an object with default options, settings, or configuration
 
 ## Usage example
 
+Abstract class example with interface implementation
+
 ```js
+// some-plugin-init/abstract.js
+
 import $ from 'jquery'; // for example
 import 'some-jquery-plugin'; // for example
 import { WebPluginInterface } from 'web-plugin-interface';
@@ -120,7 +124,7 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
      * @public
      * @returns Object
      */
-    get defaults (){
+    get defaults () {
         return {
             // an example of some options of your plugin
             autoplay: false,
