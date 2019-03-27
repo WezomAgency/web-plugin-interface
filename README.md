@@ -15,14 +15,16 @@ When creating an abstraction, we must implement all the methods and properties o
 The basis must be laid in an abstract class and brought to a final and typical concept in the classes of factories.
 
 `WebPluginInterface` has the core methods and properties that are key to working with most web plugins.
-Below is a list of these methods and properties. Then you can see an example implementation.
+Below is a list of these methods and properties. Then you can see [an example implementation](##usage-example).
 
-- `constructor()`
-- `_setup()`
-- `_beforeInitialize()`
-- `_afterInitialize()`
-- `initialize()`
-- `defaults`
+---
+
+- [`constructor()`](#constructor)
+- [`_setup()`](#_setup)
+- [`_beforeInitialize()`](#_beforeinitialize)
+- [`_afterInitialize()`](#_afterinitialize)
+- [`initialize()`](#initialize)
+- [`defaults`](#defaults)
 
 
 ### `constructor()`
@@ -65,6 +67,8 @@ Directly launch your plugin.
 
 A getter that returns an object with default options, settings, or configuration for your plugin.
 
+---
+
 ## Usage example
 
 ```js
@@ -106,7 +110,10 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
 
     /** @public */
     initialize(){
+    	this._setup();
+    	this._beforeInitialize();
         this.$container.someJqueryPlugin(this.settings);
+        this._afterInitialize();
     }
     
     /**
