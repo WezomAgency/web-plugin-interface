@@ -7,4 +7,4 @@
 
 1. [API](./api.md)
 1. Code examples
-    - [examples/abstract-class](./examples/abstract-class.md)
+    - [examples/abstract-class](./examples/abstract-class.js)
