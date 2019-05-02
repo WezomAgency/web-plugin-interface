@@ -15,6 +15,20 @@ export class WebPluginInterface {
 	}
 
 	/**
+	 * @type {Object}
+	 */
+	get defaultSettings () {
+		return {};
+	}
+
+	/**
+	 * @type {Object}
+	 */
+	get defaultProps () {
+		return {};
+	}
+
+	/**
 	 * @protected
 	 */
 	_setup () {
@@ -37,13 +51,5 @@ export class WebPluginInterface {
 
 	initialize () {
 		// code
-	}
-
-	get defaultSettings () {
-		return {};
-	}
-
-	get defaultProps () {
-		return {};
 	}
 }
