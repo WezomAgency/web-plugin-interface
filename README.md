@@ -25,6 +25,8 @@ Below is a list of these methods and properties. Then you can see [an example im
 - [`_afterInitialize()`](#_afterinitialize)
 - [`initialize()`](#initialize)
 - [`defaults`](#defaults)
+- [`defaultSettings`](#defaultsettings)
+- [`defaultProps`](#defaultprops)
 
 
 ### `constructor()`
@@ -77,7 +79,8 @@ A getter that returns an object with default options, settings, or configuration
 _`public`_  
 _**`since v3.0.0`**_
 
-A getter that returns an object with predefined props, which can be represented as a list of flags (aka properties API) that affects your settings, etc.
+A getter that returns an object with predefined props.  
+Most often this is a list of options that are not included in the list of certain options of your plugin. But you need them for individual processing your options, settings, data, etc.
 
 ---
 
@@ -99,19 +102,27 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
     /**
      * @param {jQuery} $container
      * @param {Object} [customSettings={}]
+     * @param {Object} [customProps={}]
      */
-    constructor ($container, customSettings = {}) {
+    constructor ($container, customSettings = {}, customProps = {}) {
         super();
         this.$container = $container;
         this.customSettings = customSettings;
         this.settings = {};
+        this.props = {};
         this.readyCssClass = 'is-ready';
         this.initializedCssClass = 'is-initialized';
     }
 
     /** @protected */
     _setup () {
-        this.settings = $.extends({}, this.defaults, this.customSettings);
+        this.props = $.extends({}, this.defaultProps, this.customProps);
+        this.settings = $.extends({}, this.defaultSettings, this.customSettings);
+        
+        // props example
+        if (this.props.stopAutoPlayIfOutView) {
+        	this.settings.autoplay = this.detectIfInView();
+        }
     }
 
     /** @protected */
@@ -122,6 +133,11 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
     /** @protected */
     _afterInitialize () {
         this.$container.addClass(this.initializedCssClass);
+        
+        // props example
+        if (this.props.stopAutoPlayIfOutView) {
+        	this.autoplayInViewObserve()
+        }
     }
 
     /** @public */
@@ -136,12 +152,31 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
      * @public
      * @returns Object
      */
-    get defaults () {
+    get defaultSettings () {
         return {
             // an example of some options of your plugin
-            autoplay: false,
+            autoplay: true,
             speed: 500
         }
+    }
+    
+    get defaultProps () {
+    	return {
+    		// an example of options that is native for your plugin
+    		stopAutoPlayIfOutView: true
+    	}
+    }
+
+	// ------------------------------
+	// Custom extend implemented interface
+	// ------------------------------
+    
+    detectIfInView () {
+    	// your code
+    }
+    
+    autoplayInViewObserve () {
+    	// your code
     }
 }
 ```
