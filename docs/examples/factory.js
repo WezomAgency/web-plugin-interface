@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * @module examples/abstract-class
- * @description Abstract class example with WebPluginInterface implementation
+ * @module examples/factory
+ * @description Example of Factories based on SomeJqueryPluginAbstract
  * @author OlegDutchenko <dutchenko.o.dev@gmail.com>
  * @version 0.0.1
  */
