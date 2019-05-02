@@ -20,7 +20,7 @@ Below is a list of these methods and properties. Then you can see [an example im
 ---
 
 - [`constructor()`](#constructor)
-- [`defaults`](#defaults)
+- [~~defaults~~](#defaults)
 - [`defaultSettings`](#defaultsettings)
 - [`defaultProps`](#defaultprops)
 - [`_setup()`](#_setup)
