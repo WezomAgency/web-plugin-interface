@@ -7,9 +7,17 @@
  * @version 0.0.1
  */
 
+// ----------------------------------------
+// Imports
+// ----------------------------------------
+
 import $ from 'jquery'; // for example
 import 'some-jquery-plugin'; // for example
 import { WebPluginInterface } from 'web-plugin-interface';
+
+// ----------------------------------------
+// Exports
+// ----------------------------------------
 
 /**
  * @implements WebPluginInterface
@@ -17,13 +25,14 @@ import { WebPluginInterface } from 'web-plugin-interface';
 export class SomeJqueryPluginAbstract extends WebPluginInterface {
 	/**
 	 * @param {jQuery} $container
-	 * @param {Object} [customSettings={}]
-	 * @param {Object} [customProps={}]
+	 * @param {Object} [clientSettings={}]
+	 * @param {Object} [clientProps={}]
 	 */
-	constructor ($container, customSettings = {}, customProps = {}) {
+	constructor ($container, clientSettings = {}, clientProps = {}) {
 		super();
 		this.$container = $container;
-		this.customSettings = customSettings;
+		this.clientSettings = clientSettings;
+		this.clientProps = clientProps;
 		this.settings = {};
 		this.props = {};
 		this.readyCssClass = 'is-ready';
@@ -55,8 +64,8 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
 	 * @protected
 	 */
 	_setup () {
-		this.props = $.extends({}, this.defaultProps, this.customProps);
-		this.settings = $.extends({}, this.defaultSettings, this.customSettings);
+		this.props = $.extends({}, this.defaultProps, this.clientProps);
+		this.settings = $.extends({}, this.defaultSettings, this.clientSettings);
 
 		// props example
 		if (this.props.stopAutoPlayIfOutView) {
@@ -93,9 +102,9 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
 		this._afterInitialize();
 	}
 
-	// ------------------------------
+	// ***********************************
 	// Custom extend implemented interface
-	// ------------------------------
+	// ***********************************
 
 	/**
 	 * @type {boolean}

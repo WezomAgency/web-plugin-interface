@@ -8,3 +8,5 @@
 1. [Interface](./interface.md)
 1. Code examples
     - [examples/abstract-class](./examples/abstract-class.js)
+    - [examples/factory](./examples/factory.js)
+    - [examples/index](./examples/index.js)
