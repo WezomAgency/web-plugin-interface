@@ -5,6 +5,6 @@
 #### *Table of contents*
 
 
-1. [API](./api.md)
+1. [Interface](./interface.md)
 1. Code examples
     - [examples/abstract-class](./examples/abstract-class.js)

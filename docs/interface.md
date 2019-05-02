@@ -1,4 +1,4 @@
-# WebPluginInterface API
+# Interface
 
 :arrow_left: [Docs](./index.md)
 
