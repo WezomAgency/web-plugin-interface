@@ -20,11 +20,13 @@ Below is a list of these methods and properties. Then you can see [an example im
 ---
 
 - [`constructor()`](#constructor)
+- [_~~defaults~~_](#defaults)
+- [`defaultSettings`](#defaultsettings)
+- [`defaultProps`](#defaultprops)
 - [`_setup()`](#_setup)
 - [`_beforeInitialize()`](#_beforeinitialize)
 - [`_afterInitialize()`](#_afterinitialize)
 - [`initialize()`](#initialize)
-- [`defaults`](#defaults)
 
 
 ### `constructor()`
@@ -32,6 +34,25 @@ Below is a list of these methods and properties. Then you can see [an example im
 Here we describe the future instances.:
 - get data from arguments  
 - declare instance properties
+
+### `defaults`
+
+> since v3.0.0 property renamed to `defaultSettings`
+
+### `defaultSettings`
+
+_`public`_  
+_**`since v3.0.0`**_
+
+A getter that returns an object with default options, settings, or configuration for your plugin.
+
+### `defaultProps`
+
+_`public`_  
+_**`since v3.0.0`**_
+
+A getter that returns an object with predefined props.  
+Most often this is a list of options that are not included in the list of certain options of your plugin. But you need them for individual processing your options, settings, data, etc.
 
 
 ### `_setup()`
@@ -61,12 +82,6 @@ _`public`_
 
 Directly launch your plugin.
 
-### `defaults`
-
-_`public`_
-
-A getter that returns an object with default options, settings, or configuration for your plugin.
-
 ---
 
 ## Usage example
@@ -87,49 +102,97 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
     /**
      * @param {jQuery} $container
      * @param {Object} [customSettings={}]
+     * @param {Object} [customProps={}]
      */
-    constructor ($container, customSettings = {}) {
+    constructor ($container, customSettings = {}, customProps = {}) {
         super();
         this.$container = $container;
         this.customSettings = customSettings;
         this.settings = {};
+        this.props = {};
         this.readyCssClass = 'is-ready';
         this.initializedCssClass = 'is-initialized';
     }
-
-    /** @protected */
-    _setup () {
-        this.settings = $.extends({}, this.defaults, this.customSettings);
+    
+    /**
+     * @type {Object}
+     */
+    get defaultSettings () {
+        return {
+            // an example of some options of your plugin
+            autoplay: true,
+            speed: 500
+        }
     }
 
-    /** @protected */
+    /**
+     * @type {Object}
+     */
+    get defaultProps () {
+        return {
+            // an example of options that is native for your plugin
+            stopAutoPlayIfOutView: true
+        }
+    }
+
+    /**
+     * @protected
+     */
+    _setup () {
+        this.props = $.extends({}, this.defaultProps, this.customProps);
+        this.settings = $.extends({}, this.defaultSettings, this.customSettings);
+        
+        // props example
+        if (this.props.stopAutoPlayIfOutView) {
+            this.settings.autoplay = this.detectIfInView;
+        }
+    }
+
+    /**
+     * @protected
+     */
     _beforeInitialize () {
         this.$container.addClass(this.readyCssClass);
     }
 
-    /** @protected */
+    /**
+     * @protected
+     */
     _afterInitialize () {
         this.$container.addClass(this.initializedCssClass);
+        
+        // props example
+        if (this.props.stopAutoPlayIfOutView) {
+            this._autoplayInViewObserve();
+        }
     }
 
-    /** @public */
     initialize () {
-    	this._setup();
-    	this._beforeInitialize();
+        this._setup();
+        this._beforeInitialize();
+
+        // fire up
         this.$container.someJqueryPlugin(this.settings);
+
         this._afterInitialize();
+    }
+
+    // ------------------------------
+    // Custom extend implemented interface
+    // ------------------------------
+    
+    /**
+     * @type {boolean}
+     */  
+    get detectIfInView () {
+        // your code
     }
     
     /**
-     * @public
-     * @returns Object
+     * @protected
      */
-    get defaults () {
-        return {
-            // an example of some options of your plugin
-            autoplay: false,
-            speed: 500
-        }
+    _autoplayInViewObserve () {
+        // your code
     }
 }
 ```

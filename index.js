@@ -3,6 +3,7 @@
 /**
  * @module WebPluginInterface
  * @author OlegDutchenko <dutchenko.o.dev@gmail.com>
+ * @version 3.0.0
  */
 
 /**
@@ -11,6 +12,20 @@
 export class WebPluginInterface {
 	constructor () { // eslint-disable-line no-useless-constructor
 		// code
+	}
+
+	/**
+	 * @type {Object}
+	 */
+	get defaultSettings () {
+		return {};
+	}
+
+	/**
+	 * @type {Object}
+	 */
+	get defaultProps () {
+		return {};
 	}
 
 	/**
@@ -36,9 +51,5 @@ export class WebPluginInterface {
 
 	initialize () {
 		// code
-	}
-
-	get defaults () {
-		return {};
 	}
 }
