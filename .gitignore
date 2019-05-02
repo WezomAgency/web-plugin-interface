@@ -1,5 +1,7 @@
 .idea
 bash.exe.stackdump
+.vscode
+.vagrant
 
 # Logs
 logs
