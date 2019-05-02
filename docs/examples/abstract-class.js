@@ -7,9 +7,17 @@
  * @version 0.0.1
  */
 
+// ----------------------------------------
+// Imports
+// ----------------------------------------
+
 import $ from 'jquery'; // for example
 import 'some-jquery-plugin'; // for example
 import { WebPluginInterface } from 'web-plugin-interface';
+
+// ----------------------------------------
+// Exports
+// ----------------------------------------
 
 /**
  * @implements WebPluginInterface
@@ -93,9 +101,9 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
 		this._afterInitialize();
 	}
 
-	// ------------------------------
+	// ***********************************
 	// Custom extend implemented interface
-	// ------------------------------
+	// ***********************************
 
 	/**
 	 * @type {boolean}
