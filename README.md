@@ -63,9 +63,21 @@ Directly launch your plugin.
 
 ### `defaults`
 
-_`public`_
+> since v3.0.0 property renamed to `defaultSettings`
+
+### `defaultSettings`
+
+_`public`_  
+_**`since v3.0.0`**_
 
 A getter that returns an object with default options, settings, or configuration for your plugin.
+
+### `defaultProps`
+
+_`public`_  
+_**`since v3.0.0`**_
+
+A getter that returns an object with predefined props, which can be represented as a list of flags (aka properties API) that affects your settings, etc.
 
 ---
 

@@ -3,6 +3,7 @@
 /**
  * @module WebPluginInterface
  * @author OlegDutchenko <dutchenko.o.dev@gmail.com>
+ * @version 3.0.0
  */
 
 /**
@@ -38,7 +39,11 @@ export class WebPluginInterface {
 		// code
 	}
 
-	get defaults () {
+	get defaultSettings () {
+		return {};
+	}
+
+	get defaultProps () {
 		return {};
 	}
 }
