@@ -15,7 +15,6 @@ When creating an abstraction, we must implement all the methods and properties o
 The basis must be laid in an abstract class and brought to a final and typical concept in the classes of factories.
 
 `WebPluginInterface` has the core methods and properties that are key to working with most web plugins.
-Below is a list of these methods and properties. Then you can see [an example implementation](https://github.com/WezomAgency/web-plugin-interface/blob/master/docs/index.md).
 
 ---
 

@@ -64,7 +64,8 @@ For example, add an additional handler to scroll or resize window events, which 
 
 ### `_initialize()`
 
-_`private`_
+_`private`_  
+_**`since v3.1.0`**_
 
 Directly launch your plugin.
 
