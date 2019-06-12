@@ -49,6 +49,16 @@ export class WebPluginInterface {
 		// code
 	}
 
+	/**
+	 * @protected
+	 */
+	_initialize () {
+		// code
+	}
+
+	/**
+	 * @public
+	 */
 	initialize () {
 		// code
 	}

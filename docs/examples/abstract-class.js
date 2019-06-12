@@ -64,8 +64,8 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
 	 * @protected
 	 */
 	_setup () {
-		this.props = $.extends({}, this.defaultProps, this.clientProps);
-		this.settings = $.extends({}, this.defaultSettings, this.clientSettings);
+		this.props = $.extend({}, this.defaultProps, this.clientProps);
+		this.settings = $.extend({}, this.defaultSettings, this.clientSettings);
 
 		// props example
 		if (this.props.stopAutoPlayIfOutView) {
@@ -92,13 +92,17 @@ export class SomeJqueryPluginAbstract extends WebPluginInterface {
 		}
 	}
 
+	/**
+	 * @protected
+	 */
+	_initialize () {
+		this.$container.someJqueryPlugin(this.settings);
+	}
+
 	initialize () {
 		this._setup();
 		this._beforeInitialize();
-
-		// fire up
-		this.$container.someJqueryPlugin(this.settings);
-
+		this._initialize();
 		this._afterInitialize();
 	}
 

@@ -11,6 +11,7 @@
 - [`_setup()`](#_setup)
 - [`_beforeInitialize()`](#_beforeinitialize)
 - [`_afterInitialize()`](#_afterinitialize)
+- [`_initialize()`](#_initialize)
 - [`initialize()`](#initialize)
 
 
@@ -61,11 +62,28 @@ _`protected`_
 Here we can describe the actions that should be performed after the initialization of the plugin.  
 For example, add an additional handler to scroll or resize window events, which will update the parameters of your current plugin.
 
+### `_initialize()`
+
+_`private`_
+
+Directly launch your plugin.
+
 ### `initialize()`
 
 _`public`_
 
-Directly launch your plugin.
+Public start-runner method
+
+_example_
+
+```js
+initialize() {
+    this._setup();
+    this._beforeInitialize();
+    this._initialize();
+    this._afterInitialize();
+}
+```
 
 ---
 
